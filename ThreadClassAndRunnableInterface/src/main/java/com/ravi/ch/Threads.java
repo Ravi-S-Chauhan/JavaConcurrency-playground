@@ -3,6 +3,7 @@ package com.ravi.ch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -48,8 +49,5 @@ public class Threads {
         logger.info("The result we got from override callable is `{}`",future.get());
 
         logger.info("{} created a new Executor using Executor.newFixedThreadPool",executor);
-
-
-
     }
 }
