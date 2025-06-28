@@ -3,6 +3,11 @@ package com.ravi.ch;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class Threads {
 
     private static final Logger logger = LoggerFactory.getLogger(Threads.class);
@@ -18,7 +23,7 @@ public class Threads {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
         CustomThreadClass thread1 = new CustomThreadClass(5);
         CustomThreadClass thread2 = new CustomThreadClass(10);
@@ -35,6 +40,16 @@ public class Threads {
 
         logger.info("{} creates new thread by CustomThreadInterface and we pass the custom runnable"
                 ,thread2);
+
+        CustomThreadCallable callable = new CustomThreadCallable();
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+        Future<String> future = executor.submit(callable);
+
+        logger.info("The result we got from override callable is `{}`",future.get());
+
+        logger.info("{} created a new Executor using Executor.newFixedThreadPool",executor);
+
+
 
     }
 }
