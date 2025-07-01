@@ -13,3 +13,8 @@ The following topics will be covered in this repo
 7. Semaphore
 8. Java and Concurrent collection
 9. Future and completable future.
+
+# Leetcode concurrency problems
+
+1. ZeroEvenOdd problem
+
