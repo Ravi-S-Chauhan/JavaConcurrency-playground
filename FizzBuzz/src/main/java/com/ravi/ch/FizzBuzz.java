@@ -4,13 +4,12 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 public class FizzBuzz {
-    private int num;
+    private final int num;
     private int count;
     private Semaphore fizzLock;
     private Semaphore buzzLock;
     private Semaphore fizzBuzzLock;
     private Semaphore numLock;
-    private Semaphore mutex;
 
     FizzBuzz(int num){
         this.num = num;
@@ -19,7 +18,6 @@ public class FizzBuzz {
         this.buzzLock = new Semaphore(0);
         this.fizzBuzzLock = new Semaphore(0);
         this.numLock = new Semaphore(1);
-        this.mutex = new Semaphore(0);
     }
 
     public void number() throws InterruptedException{
