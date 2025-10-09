@@ -1,0 +1,75 @@
+public interface GUI{
+    Button createButton();
+    CheckBox createCheckBox();
+}
+
+pubic interface Button{
+    void click();
+}
+
+public interface CheckBox{
+    void check();
+}
+
+public class winButton implements Button{
+    @Override
+    void click(){
+        System.out.println("This is a windows click");
+    }
+}
+
+public class macButton implements Button{
+    void click(){
+        System.out.println("This is a Mac click");
+    }
+}
+
+public class winCheckBox implements CheckBox{
+    void check(){
+        System.out.println("This is a Win CheckBox");
+    }
+}
+
+public class macCheckBox implements CheckBox{
+    void check(){
+        System.out.println("This is a Mac CheckBox");
+    }
+}
+
+public class Win implements GUI{
+    public Button createButton(){
+        return new winButton();
+    }
+    public CheckBox createCheckBox(){
+        return new winCheckBox();
+    }
+}
+
+public class Mac implements GUI{
+    public static Button createButton(){
+        return new macButton();
+    }
+    public static CheckBox createCheckBox(){
+        return new macCheckBox();
+    }
+}
+
+public class Factory{
+    public static GUI getGUI(string type){
+        if (type.equals("Win")){
+            return new Win();
+        } else if (type.equals("Mac")){
+            return new Mac();
+        } else {
+            throw new IllegalArgumentException("Input not recognized");
+        }
+    }
+}
+
+public class Main{
+    public static void main(){
+        GUI fact = new Factory("Win");
+        fact.createButton().click();
+        fact.createCheckBox().check();
+    }
+}
