@@ -1,6 +1,6 @@
 public class VehicleFactory {
     public static Vehicle getVehicle(String type){
-        if (type.equals("Car")){
+        if (type.equals("BuilderCar")){
             return new Car();
         } else if (type.equals("Truck")){
             return new Truck();
